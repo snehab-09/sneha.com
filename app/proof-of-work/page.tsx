@@ -19,7 +19,7 @@ const proofOfWork = [
     projectLink:
       "https://gtm-research-portfolio.lovable.app/",
     linkLabel:
-      "view research ↗",
+      "view research",
   },
 
   {
@@ -37,9 +37,96 @@ const proofOfWork = [
     projectLink:
       "https://drive.google.com/file/d/1jd6l0ltkA0t8TpGktS9KqUaZ_-66hL34/view?usp=sharing",
     linkLabel:
-      "view teardown ↗",
+      "view teardown",
   },
 ];
+
+function ArrowUpRight() {
+  return (
+    <svg
+      className="inline-arrow"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M6 18L18 6"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M9 6H18V15"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ArrowLeft() {
+  return (
+    <svg
+      className="inline-arrow"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M19 12H5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M11 6L5 12L11 18"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ArrowUp() {
+  return (
+    <svg
+      className="inline-arrow"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 19V5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M6 11L12 5L18 11"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default function ProofOfWorkPage() {
   const [openProof, setOpenProof] =
@@ -66,13 +153,15 @@ export default function ProofOfWorkPage() {
             href="/"
             className="back-home"
           >
-            ← back home
+            <ArrowLeft />
+            <span>
+              back home
+            </span>
           </a>
 
           <ThemeToggle />
 
         </div>
-
 
         <div className="proof-title-wrap">
 
@@ -86,7 +175,6 @@ export default function ProofOfWorkPage() {
 
         </div>
 
-
         <p className="proof-intro">
           A few things I&apos;ve researched
           tested and worked through beyond
@@ -94,7 +182,6 @@ export default function ProofOfWorkPage() {
         </p>
 
       </header>
-
 
       <section className="proof-list">
 
@@ -139,7 +226,6 @@ export default function ProofOfWorkPage() {
 
                 </button>
 
-
                 <div
                   className={`proof-details ${
                     isOpen
@@ -158,7 +244,6 @@ export default function ProofOfWorkPage() {
 
                     </div>
 
-
                     <div className="proof-meta">
 
                       <div className="proof-tags">
@@ -173,7 +258,6 @@ export default function ProofOfWorkPage() {
 
                       </div>
 
-
                       <div className="proof-links">
 
                         <a
@@ -186,7 +270,10 @@ export default function ProofOfWorkPage() {
                             event.stopPropagation()
                           }
                         >
-                          {item.linkLabel}
+                          <span>
+                            {item.linkLabel}
+                          </span>
+                          <ArrowUpRight />
                         </a>
 
                       </div>
@@ -204,11 +291,13 @@ export default function ProofOfWorkPage() {
 
       </section>
 
-
       <footer className="proof-footer">
 
         <a href="/">
-          home ↑
+          <span>
+            home
+          </span>
+          <ArrowUp />
         </a>
 
       </footer>

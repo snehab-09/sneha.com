@@ -13,6 +13,93 @@ const accentColors = [
 
 const DEFAULT_ACCENT = "default";
 
+function ArrowUpRight() {
+  return (
+    <svg
+      className="inline-arrow"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M6 18L18 6"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M9 6H18V15"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ArrowDownRight() {
+  return (
+    <svg
+      className="scroll-arrow-icon"
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M5 5L19 19"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M11 19H19V11"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ArrowDown() {
+  return (
+    <svg
+      className="inline-arrow"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 4V20"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M6 14L12 20L18 14"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default function Home() {
   const [copied, setCopied] = useState(false);
 
@@ -22,9 +109,8 @@ export default function Home() {
   const [selectedColor, setSelectedColor] =
     useState<string>(DEFAULT_ACCENT);
 
-  const [views, setViews] = useState<number | null>(
-    null
-  );
+  const [views, setViews] =
+    useState<number | null>(null);
 
   useEffect(() => {
     const savedAccent =
@@ -214,7 +300,6 @@ export default function Home() {
               colorPickerOpen
             }
           >
-
             <span>
               pick your color
             </span>
@@ -229,7 +314,6 @@ export default function Home() {
                     : selectedColor,
               }}
             />
-
           </button>
 
           {colorPickerOpen && (
@@ -300,7 +384,6 @@ export default function Home() {
               onClick={handleCopy}
               aria-label="Copy email address"
             >
-
               <span className="copy-icon">
 
                 <svg
@@ -311,7 +394,6 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                 >
-
                   <rect
                     x="9"
                     y="9"
@@ -328,11 +410,9 @@ export default function Home() {
                     strokeWidth="1.5"
                     strokeLinecap="round"
                   />
-
                 </svg>
 
               </span>
-
             </button>
 
             <a
@@ -411,7 +491,7 @@ export default function Home() {
           </span>
 
           <span className="scroll-arrow">
-            ↘
+            <ArrowDownRight />
           </span>
 
         </div>
@@ -452,7 +532,7 @@ export default function Home() {
               </span>
 
               <span>
-                ↗
+                <ArrowUpRight />
               </span>
             </a>
 
@@ -467,7 +547,7 @@ export default function Home() {
               </span>
 
               <span>
-                ↗
+                <ArrowUpRight />
               </span>
             </a>
 
@@ -482,7 +562,7 @@ export default function Home() {
               </span>
 
               <span>
-                ↗
+                <ArrowUpRight />
               </span>
             </a>
 
@@ -491,7 +571,10 @@ export default function Home() {
               download
               className="resume-link"
             >
-              ↓ download my resume
+              <ArrowDown />
+              <span>
+                download my resume
+              </span>
             </a>
 
           </div>

@@ -55,6 +55,93 @@ const projects = [
   },
 ];
 
+function ArrowUpRight() {
+  return (
+    <svg
+      className="inline-arrow"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M6 18L18 6"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M9 6H18V15"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ArrowLeft() {
+  return (
+    <svg
+      className="inline-arrow"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M19 12H5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M11 6L5 12L11 18"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ArrowUp() {
+  return (
+    <svg
+      className="inline-arrow"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 19V5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M6 11L12 5L18 11"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default function ProjectsPage() {
   const [openProject, setOpenProject] =
     useState<number | null>(null);
@@ -80,13 +167,15 @@ export default function ProjectsPage() {
             href="/"
             className="back-home"
           >
-            ← back home
+            <ArrowLeft />
+            <span>
+              back home
+            </span>
           </a>
 
           <ThemeToggle />
 
         </div>
-
 
         <div className="projects-title-wrap">
 
@@ -100,7 +189,6 @@ export default function ProjectsPage() {
 
         </div>
 
-
         <p className="projects-intro">
           A few things I&apos;ve built while
           exploring data, AI, machine learning
@@ -109,7 +197,6 @@ export default function ProjectsPage() {
         </p>
 
       </header>
-
 
       <section className="project-list">
 
@@ -154,7 +241,6 @@ export default function ProjectsPage() {
 
                 </button>
 
-
                 <div
                   className={`project-details ${
                     isOpen
@@ -173,7 +259,6 @@ export default function ProjectsPage() {
 
                     </div>
 
-
                     <div className="project-meta">
 
                       <div className="project-tags">
@@ -188,7 +273,6 @@ export default function ProjectsPage() {
 
                       </div>
 
-
                       <div className="project-links">
 
                         {project.projectLink && (
@@ -202,7 +286,10 @@ export default function ProjectsPage() {
                               event.stopPropagation()
                             }
                           >
-                            live project ↗
+                            <span>
+                              live project
+                            </span>
+                            <ArrowUpRight />
                           </a>
                         )}
 
@@ -217,7 +304,10 @@ export default function ProjectsPage() {
                               event.stopPropagation()
                             }
                           >
-                            github ↗
+                            <span>
+                              github
+                            </span>
+                            <ArrowUpRight />
                           </a>
                         )}
 
@@ -236,11 +326,13 @@ export default function ProjectsPage() {
 
       </section>
 
-
       <footer className="projects-footer">
 
         <a href="/">
-          home ↑
+          <span>
+            home
+          </span>
+          <ArrowUp />
         </a>
 
       </footer>

@@ -9,9 +9,11 @@
   --accent: #222222;
 
   --background: #f8f6f0;
+
   --paper: #f8f6f0;
 
   --text: #252525;
+
   --muted: #777777;
 
   --line: rgba(40, 40, 40, 0.14);
@@ -21,11 +23,14 @@
   --white: #ffffff;
 }
 
+
 html.dark {
   --background: #181818;
+
   --paper: #181818;
 
   --text: #eeeeee;
+
   --muted: #9b9b9b;
 
   --line: rgba(255, 255, 255, 0.15);
@@ -516,17 +521,38 @@ html.dark .default-swatch {
 }
 
 .scroll-arrow {
-  display: block;
+  display: inline-flex;
 
-  font-family: "Caveat", cursive;
+  align-items: center;
 
-  font-size: 25px;
+  justify-content: center;
 
-  line-height: 0.8;
+  line-height: 1;
 
   transform:
     rotate(15deg)
     translateX(2px);
+}
+
+.scroll-arrow-icon {
+  display: inline-block;
+
+  flex-shrink: 0;
+
+  vertical-align: middle;
+}
+
+
+/* =========================================================
+   SHARED INLINE SVG ARROWS
+========================================================= */
+
+.inline-arrow {
+  display: inline-block;
+
+  flex-shrink: 0;
+
+  vertical-align: middle;
 }
 
 
@@ -599,6 +625,8 @@ html.dark .default-swatch {
 
   justify-content: space-between;
 
+  align-items: center;
+
   gap: 20px;
 
   padding: 13px 0;
@@ -652,6 +680,12 @@ html.dark .default-swatch {
   margin-top: 20px;
 
   padding-bottom: 4px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
 
   font-size: 12px;
 
@@ -734,6 +768,14 @@ html.dark .default-swatch {
   font-style: italic;
 }
 
+.footer-views {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+}
+
 
 /* =========================================================
    SHARED SUBPAGE HEADER
@@ -752,6 +794,12 @@ html.dark .default-swatch {
 }
 
 .back-home {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
   color: var(--muted);
 
   font-size: 12px;
@@ -1030,6 +1078,12 @@ html.dark .default-swatch {
 }
 
 .project-links a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
   font-size: 11px;
 
   text-decoration-line: underline;
@@ -1065,6 +1119,12 @@ html.dark .default-swatch {
 }
 
 .projects-footer a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
   text-decoration-line: underline;
 
   text-decoration-style: wavy;
@@ -1323,6 +1383,12 @@ html.dark .default-swatch {
 .proof-links a {
   position: relative;
 
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
   font-size: 11px;
 
   text-decoration-line: underline;
@@ -1358,6 +1424,12 @@ html.dark .default-swatch {
 }
 
 .proof-footer a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
   text-decoration-line: underline;
 
   text-decoration-style: wavy;
@@ -1675,6 +1747,12 @@ html.dark .default-swatch {
 }
 
 .experience-footer a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
   text-decoration-line: underline;
 
   text-decoration-style: wavy;
@@ -2037,9 +2115,4 @@ html.dark .default-swatch {
 
     justify-content: flex-end;
   }
-}
-.footer-views {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
 }
