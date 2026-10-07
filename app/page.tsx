@@ -22,6 +22,10 @@ export default function Home() {
   const [selectedColor, setSelectedColor] =
     useState<string>(DEFAULT_ACCENT);
 
+  const [views, setViews] = useState<number | null>(
+    null
+  );
+
   useEffect(() => {
     const savedAccent =
       localStorage.getItem("accent");
@@ -84,6 +88,33 @@ export default function Home() {
         handleThemeChange
       );
     };
+  }, []);
+
+  useEffect(() => {
+    const fetchViews = async () => {
+      try {
+        const response =
+          await fetch("/api/views");
+
+        if (!response.ok) {
+          throw new Error(
+            "Failed to fetch views"
+          );
+        }
+
+        const data =
+          await response.json();
+
+        setViews(data.views);
+      } catch (error) {
+        console.error(
+          "Could not fetch view count:",
+          error
+        );
+      }
+    };
+
+    fetchViews();
   }, []);
 
   const handleCopy = async () => {
@@ -168,7 +199,6 @@ export default function Home() {
 
         </nav>
 
-
         <div className="color-picker">
 
           <button
@@ -184,6 +214,7 @@ export default function Home() {
               colorPickerOpen
             }
           >
+
             <span>
               pick your color
             </span>
@@ -198,8 +229,8 @@ export default function Home() {
                     : selectedColor,
               }}
             />
-          </button>
 
+          </button>
 
           {colorPickerOpen && (
             <div className="color-palette">
@@ -219,7 +250,6 @@ export default function Home() {
                 }
                 aria-label="Default accent"
               />
-
 
               {accentColors.map(
                 (color) => (
@@ -252,7 +282,6 @@ export default function Home() {
 
       </header>
 
-
       {/* ==================== LANDING ==================== */}
 
       <section className="landing">
@@ -263,7 +292,6 @@ export default function Home() {
             Hey, this is Sneha.
           </h1>
 
-
           <div className="email-row">
 
             <button
@@ -272,6 +300,7 @@ export default function Home() {
               onClick={handleCopy}
               aria-label="Copy email address"
             >
+
               <span className="copy-icon">
 
                 <svg
@@ -282,6 +311,7 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                 >
+
                   <rect
                     x="9"
                     y="9"
@@ -298,11 +328,12 @@ export default function Home() {
                     strokeWidth="1.5"
                     strokeLinecap="round"
                   />
+
                 </svg>
 
               </span>
-            </button>
 
+            </button>
 
             <a
               href="mailto:snehamaha616@gmail.com"
@@ -311,20 +342,17 @@ export default function Home() {
               snehamaha616@gmail.com
             </a>
 
-
             {copied && (
               <span className="copied-label">
                 copied
               </span>
             )}
 
-
             <ThemeToggle />
 
           </div>
 
         </div>
-
 
         <div className="intro">
 
@@ -338,7 +366,6 @@ export default function Home() {
             sometimes simply because I was curious
             about how something worked.
           </p>
-
 
           <p>
             I’ve worked on{" "}
@@ -369,7 +396,6 @@ export default function Home() {
             as a Data Analyst Intern at Kovaion.
           </p>
 
-
           <p>
             Basically, it’s a collection of things
             I’ve been curious enough to actually
@@ -377,7 +403,6 @@ export default function Home() {
           </p>
 
         </div>
-
 
         <div className="scroll-cue">
 
@@ -393,7 +418,6 @@ export default function Home() {
 
       </section>
 
-
       {/* ==================== CONTACT ==================== */}
 
       <section
@@ -404,7 +428,6 @@ export default function Home() {
         <div className="section-label">
           say hi
         </div>
-
 
         <div className="contact-layout">
 
@@ -417,7 +440,6 @@ export default function Home() {
             </p>
 
           </div>
-
 
           <div className="contact-links">
 
@@ -434,7 +456,6 @@ export default function Home() {
               </span>
             </a>
 
-
             <a
               href="https://www.linkedin.com/in/snehab09"
               target="_blank"
@@ -449,7 +470,6 @@ export default function Home() {
                 ↗
               </span>
             </a>
-
 
             <a
               href="https://github.com/snehab-09"
@@ -466,7 +486,6 @@ export default function Home() {
               </span>
             </a>
 
-
             <a
               href="/Resume%20Sneha%20B.pdf"
               download
@@ -480,7 +499,6 @@ export default function Home() {
         </div>
 
       </section>
-
 
       {/* ==================== QUOTE ==================== */}
 
@@ -497,13 +515,47 @@ export default function Home() {
 
       </section>
 
-
       {/* ==================== FOOTER ==================== */}
 
       <footer className="footer">
 
         <span>
           made by Sneha
+        </span>
+
+        <span className="footer-views">
+
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+
+            <circle
+              cx="12"
+              cy="12"
+              r="2.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+          </svg>
+
+          <span>
+            {views === null
+              ? "— views"
+              : `${views} views`}
+          </span>
+
         </span>
 
         <span>
